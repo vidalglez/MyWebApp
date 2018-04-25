@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Green Planet</h1>
+	<p id="greenplanet">All is well</p>
+	<h2>Red Planet</h2>
+	<p id="redplanet">Nothing to report</p>
+	<h1>Blue Planet</h1>
+	<p id="blueplanet">All systems A-OK</p>
+
+</body>
+<script>
+	window.onload = loadSlow;
+	
+	function loadSlow(){
+		//setTimeout(addElement, 3000);
+		setTimeout(function(){
+			var green = document.getElementById("greenplanet");			
+			green.innerHTML = "Red Alert: hit by phaser fire";
+			var h1 = document.createElement("h1");
+			h1.innerHTML = "H1 element created and added!";
+			h1.setAttribute("style", "font-family: Verdana;");
+			var body = document.getElementsByTagName("body")[0];
+			body.appendChild(h1);
+		}, 3000);
+	}
+	
+	function addElement(){
+		var green = document.getElementById("greenplanet");
+		
+		green.innerHTML = "Red Alert: hit by phaser fire";
+	}
+
+</script>
+</html>

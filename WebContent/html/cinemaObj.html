@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Webville Cinema Objects</title>
+<script>
+	function Movie(title, genre, rating, showTimes){
+		this.title = title;
+		this.genre = genre;
+		this.rating = rating;
+		this.showTimes = showTimes;
+		this.getNextShowing = function(){
+			var now = new Date().getTime();
+			for(var i = 0; i < this.showTimes.length; i++ ){
+				var showTime = getTimeFromString(this.showTimes[i]);
+				if((showTime - now) > 0)
+					return "Next showing of " + this.title + " is " + this.showTimes[i];
+			}
+			return null;
+		};
+	}
+	var movie1 = new Movie("Plan 9 from Outer Space", "cult classic", 2, ["3:00pm", "7:00pm", "11:00pm"] );
+	var movie2 = new Movie("Forbidden Planet", "classic sci-fi", 5, ["5:00pm", "9:00pm", "10:00pm"] );
+
+	window.onload = function(){
+		var body = document.getElementsByTagName("body")[0];
+		var h1 = document.createElement("h3");
+		h1.setAttribute("style", "font-family: Verdana;");
+		h1.innerHTML = "Title: " + movie1.title + ", Genre: " + movie1.genre + ", Rating: " + movie1.rating + ", Show times: ";
+		for(var i in movie1.showTimes){
+			h1.innerHTML += movie1.showTimes[i] + " "	
+		}
+		var h2 = document.createElement("h3");
+		h2.setAttribute("style", "font-family: Verdana; color: blue;");
+		h2.innerHTML = "Title: " + movie2.title + ", Genre: " + movie2.genre + ", Rating: " + movie2.rating + ", Show times: ";
+		for(var i in movie2.showTimes){
+			h2.innerHTML += movie2.showTimes[i] + " ";
+		}
+		
+		body.appendChild(h1);
+		body.appendChild(h2);
+		
+		//var nextShowing = getNextShowing(movie1);
+		var div1 = document.createElement("div");
+		div1.innerHTML = movie1.getNextShowing();//nextShowing;
+		body.appendChild(div1);
+		var div2 = document.createElement("div");
+		div2.innerHTML = movie2.getNextShowing();//getNextShowing(movie2);
+		body.appendChild(div2);
+		
+		var div3 = document.createElement("div");
+		div3.innerHTML = "Domain: " + document.domain + ", title: " + document.title + ", URL: " + document.URL;
+		body.appendChild(div3);
+	}
+
+	function getTimeFromString(timeString){
+		var theTime = new Date();
+		var time = timeString.match(/(\d+)(?::(\d\d))?\s*(p?)/);
+		theTime.setHours( parseInt(time[1]) + (time[3] ? 12 : 0) );
+		theTime.setMinutes( parseInt(time[2]) || 0 );
+		return theTime.getTime();
+	}
+	
+	function enumProps(movie){
+		var prop;
+		for(prop in movie){
+			document.write("Property: " + prop + ", Value: " + movie[prop] + "<br />");
+		}
+	}
+	
+	enumProps(movie1);
+	enumProps(movie2);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Furry Friends Campaign: jQuery Proof-of-Concept</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" >
+	<script src="../js/jquery-2.1.1.js"></script>
+</head>
+<body>
+<!--
+<div id="showfriend">
+	<a href="#">Furry Friends<img src="../img/espn.jpg" id="myimg"></a>
+</div>
+-->
+<div id="clickMe">ESPN body</div>
+<div id="picFrame"><img src="../img/espn.jpg" id="myimg"></div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#clickMe").click(function(){
+			$("#myimg").fadeIn(1000);
+			$("#picFrame").slideToggle("slow");
+		});
+	});
+</script>
+</html>

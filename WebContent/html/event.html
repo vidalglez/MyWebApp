@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>I'm Alive!</title>
+	<style>
+		body{margin: 20px;}
+		
+		img{width: 35%; height: 35%; margin: 20px;}
+	</style>
+	<script>
+		
+		window.onload = init;
+	
+		function init(){
+			//var image = document.getElementById("zero");
+			var images =  document.getElementsByTagName("img");
+			//image.onclick = showAnswer;
+			for(var i = 0; i < images.length; i++){
+				images[i].onclick = showAnswer;
+			}
+		}
+		
+		function showAnswer(eventObj){
+			var image = eventObj.target;
+			switch(image.id){
+				case "zero": image.src = "../img/espn.jpg"; break;
+				case "one": image.src = "../img/soda.jpg"; break;
+				case "two": image.src = "../img/storm.jpg"; break;
+				case "three": image.src = "../img/02.jpg"; break;
+			}
+		}
+		
+		/*function showAnswer(){
+			var image = document.getElementById("zero");
+			image.src = "../img/espn.jpg";
+		}*/
+		
+	</script>
+</head>
+<body>
+	<img id="zero" src="../img/02.jpg">
+	<img id="one" src="../img/espn.jpg">
+	<img id="two" src="../img/soda.jpg">
+	<img id="three" src="../img/storm.jpg">
+</body>
+</html>

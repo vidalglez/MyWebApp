@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<!--<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+	Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> -->
+<struts-config>
+	<form-beans>
+		<form-bean name="EmployeeForm" type="com.example.forms.EmployeeForm"></form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+		<exception key="reg.error.unknown" type="java.lang.Exception" path="/jsp/unkError.jsp"/>
+	</global-exceptions>
+
+	<action-mappings>
+		<action path="/listEmployees" type="com.example.actions.ListEmployeesAction" >
+			<forward name="ok" path="/jsp/employees.jsp"/>
+		</action>
+	
+		<action path="/addEmployee" type="com.example.actions.EmployeeAction"
+			validate="true" name="EmployeeForm" scope="request" input="/jsp/employeeForm.jsp">
+			<forward name="success" path="/jsp/employeeResult.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="MessageResources" />
+</struts-config>
